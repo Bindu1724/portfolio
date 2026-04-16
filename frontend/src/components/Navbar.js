@@ -3,6 +3,7 @@ import '../styles/NavBar.css';
 
 function Navbar() {
   const [activeTab, setActiveTab] = useState('home');
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -26,6 +27,10 @@ function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
   const scrollToSection = (sectionId) => {
     const element = document.getElementById(sectionId);
     if (element) {
@@ -36,6 +41,8 @@ function Navbar() {
     if (sectionId === 'projects') {
       window.dispatchEvent(new Event('projectsTabClicked'));
     }
+
+    setIsMenuOpen(false);
   };
 
   return (
@@ -51,14 +58,15 @@ function Navbar() {
         <button
           className="navbar-toggler"
           type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarNav"
+          onClick={toggleMenu}
+          aria-controls="navbarNav"
+          aria-expanded={isMenuOpen}
         >
           <span className="navbar-toggler-icon"></span>
         </button>
 
         {/* Links */}
-        <div className="collapse navbar-collapse" id="navbarNav">
+        <div className={`collapse navbar-collapse ${isMenuOpen ? 'show' : ''}`} id="navbarNav">
           <ul className="navbar-nav ms-auto">
             <li className="nav-item">
               <button 

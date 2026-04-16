@@ -64,3 +64,22 @@
   background-color: #d4b025 !important;
 }
 
+/* Mobile menu styles */
+.navbar-collapse {
+  display: none;
+}
+
+.navbar-collapse.show {
+  display: block;
+}
+
+@media (min-width: 992px) {
+  .navbar-collapse {
+    display: flex !important;
+  }
+  
+  .navbar-collapse.show {
+    display: flex !important;
+  }
+}
+
