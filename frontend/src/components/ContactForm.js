@@ -12,7 +12,7 @@ function ContactForm() {
   const handleSubmit = async e => {
     e.preventDefault();
     try {
-      const res = await axios.post('http://localhost:5000/contact', form);
+      const res = await axios.post('https://portfolio-2w5o.onrender.com/contact', form);
       setStatus(res.data.message || 'Message sent successfully!');
       setForm({ name: '', email: '', message: '' }); // reset form
     } catch (err) {

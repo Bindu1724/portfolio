@@ -7,7 +7,7 @@ function Projects() {
   const [animateCards, setAnimateCards] = useState(false);
 
   useEffect(() => {
-    axios.get('http://localhost:5000/api/projects')
+    axios.get('https://portfolio-2w5o.onrender.com/api/projects')
       .then(res => setProjects(res.data))
       .catch(err => console.log(err));
   }, []);
